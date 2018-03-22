@@ -23,14 +23,18 @@ public class MainActivity extends AppCompatActivity {
      */
     public void update(View view) {
         display(numOfCoffees);
-        displayPrice(numOfCoffees * PRICE);
+        displayPrice(calcPrice(numOfCoffees));
     }
     /**
      * This method is called to order
      */
     public void submitOrder(View view) {
         displayOrder();
-        displayOrderTotal(numOfCoffees * PRICE);
+        displayOrderTotal(calcPrice(numOfCoffees));
+    }
+
+    public int calcPrice(int quantity) {
+        return numOfCoffees * PRICE;
     }
 
     /**
@@ -58,29 +62,30 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
     /**
      * This method displays the given price on the screen.
      */
     private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
     private void displayOrder() {
-        TextView orderedTextView = (TextView) findViewById(R.id.ordered_view);
+        TextView orderedTextView = findViewById(R.id.ordered_view);
         orderedTextView.setText("Order has been submitted! Thank you!");
     }
+
     private void resetOrder() {
-        TextView orderedTextView = (TextView) findViewById(R.id.ordered_view);
+        TextView orderedTextView = findViewById(R.id.ordered_view);
         orderedTextView.setText("");
-        TextView totalTextView = (TextView) findViewById(R.id.total_view);
+        TextView totalTextView = findViewById(R.id.total_view);
         totalTextView.setText("");
     }
     private void displayOrderTotal(int num) {
-        TextView orderedTextView = (TextView) findViewById(R.id.total_view);
-        orderedTextView.setText("Order total is: " + num);
+        TextView orderedTextView = findViewById(R.id.total_view);
+        orderedTextView.setText("Order total is: $" + num);
     }
 
 }
