@@ -74,7 +74,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void displayOrder() {
         TextView orderedTextView = findViewById(R.id.ordered_view);
-        orderedTextView.setText("Order has been submitted! Thank you!");
+        if (numOfCoffees > 0) {
+            orderedTextView.setText("Order has been submitted! Thank you!");
+        } else {
+            orderedTextView.setText("Please enter a number greater than 0!");
+        }
     }
 
     private void resetOrder() {
@@ -85,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
-        orderedTextView.setText("Order total is: $" + num);
+        if (numOfCoffees > 0) {
+            orderedTextView.setText("Order total is: $" + num);
+        }
     }
 
 }
