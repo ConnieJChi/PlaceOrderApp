@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         displayOrder();
         displayOrderTotal(calcPrice(numOfCoffees));
+        displayName();
     }
 
     public int calcPrice(int quantity) {
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         numOfCoffees += 1;
         update(view);
-        resetOrder();
+        reset();
     }
     /**
      * Decrements number of coffees
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             numOfCoffees = 0;
         }
         update(view);
-        resetOrder();
+        reset();
     }
 
     /**
@@ -81,11 +82,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void resetOrder() {
+    private void displayName() {
+        TextView orderedTextView = findViewById(R.id.name_view);
+        orderedTextView.setText("Name: Connie Chi");
+    }
+
+    private void reset() {
         TextView orderedTextView = findViewById(R.id.ordered_view);
         orderedTextView.setText("");
         TextView totalTextView = findViewById(R.id.total_view);
         totalTextView.setText("");
+        TextView name = findViewById(R.id.name_view);
+        name.setText("");
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
