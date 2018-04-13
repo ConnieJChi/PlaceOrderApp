@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import java.text.NumberFormat;
 
-/**
- * This app displays an order form to order coffee.
- */
+
 public class MainActivity extends AppCompatActivity {
     int numOfCoffees = 0;
     public static final int PRICE = 5;
@@ -18,16 +16,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    /**
-     * This method is called to update quantity and price
-     */
+
     public void update(View view) {
         display(numOfCoffees);
         displayPrice(calcPrice(numOfCoffees));
     }
-    /**
-     * This method is called to order
-     */
+
     public void submitOrder(View view) {
         displayOrder();
         displayOrderTotal(calcPrice(numOfCoffees));
@@ -38,17 +32,12 @@ public class MainActivity extends AppCompatActivity {
         return numOfCoffees * PRICE;
     }
 
-    /**
-     * Increments number of coffees
-     */
     public void increment(View view) {
         numOfCoffees += 1;
         update(view);
         reset();
     }
-    /**
-     * Decrements number of coffees
-     */
+
     public void decrement(View view) {
         numOfCoffees -= 1;
         if (numOfCoffees < 0) {
@@ -58,17 +47,11 @@ public class MainActivity extends AppCompatActivity {
         reset();
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-
     private void display(int number) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
-    /**
-     * This method displays the given price on the screen.
-     */
+
     private void displayPrice(int number) {
         TextView priceTextView = findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
