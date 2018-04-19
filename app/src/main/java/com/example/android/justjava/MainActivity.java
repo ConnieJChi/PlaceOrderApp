@@ -3,12 +3,18 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.text.NumberFormat;
 
 
 public class MainActivity extends AppCompatActivity {
     int numOfCoffees = 0;
+    boolean pChecked = false;
+    boolean rChecked = false;
     public static final int PRICE = 5;
 
     @Override
@@ -26,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         displayOrder();
         displayOrderTotal(calcPrice(numOfCoffees));
         displayName();
+        displayShipping();
     }
 
     public int calcPrice(int quantity) {
@@ -84,5 +91,25 @@ public class MainActivity extends AppCompatActivity {
             orderedTextView.setText("Order total is: $" + num);
         }
     }
+    public void premiumClicked(View view) {
+        CheckBox p = findViewById(R.id.checkbox_premium);
+        if (p.isChecked()) {
+            pChecked = true;
+        }
+    }
+    public void regularClicked(View view) {
+        CheckBox r = findViewById(R.id.checkbox_r);
+        if (r.isChecked()) {
+            rChecked = true;
+        }
+    }
+    public void displayShipping() {
+        TextView shipping = findViewById(R.id.shipping_view);
+        if (pChecked) {
+            shipping.setText("Premium Shipping!");
+        } else if (rChecked) {
+            shipping.setText("Regular Shipping!");
+            }
+        }
 
-}
+    }
