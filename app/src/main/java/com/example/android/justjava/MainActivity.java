@@ -74,7 +74,12 @@ public class MainActivity extends AppCompatActivity {
         TextView orderedTextView = findViewById(R.id.name_view);
         orderedTextView.setText("Name: Connie Chi");
     }
-
+//    private void uncheck() {
+//        CheckBox p = findViewById(R.id.checkbox_premium);
+//        CheckBox r = findViewById(R.id.checkbox_regular);
+//        p.setChecked(false);
+//        r.setChecked(false);
+//    }
     private void reset() {
         TextView orderedTextView = findViewById(R.id.ordered_view);
         orderedTextView.setText("");
@@ -84,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
         name.setText("");
         TextView shipping = findViewById(R.id.shipping_view);
         shipping.setText("");
-        rChecked = false;
-        pChecked = false;
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
@@ -94,15 +97,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void premiumClicked(View view) {
-        CheckBox p = findViewById(R.id.checkbox_premium);
+        reset();
+//        CheckBox p = findViewById(R.id.checkbox_premium);
+        CheckBox p = (CheckBox) view;
         if (p.isChecked()) {
             pChecked = true;
+        } else {
+            pChecked = false;
         }
     }
     public void regularClicked(View view) {
-        CheckBox r = findViewById(R.id.checkbox_r);
+        reset();
+//        CheckBox r = findViewById(R.id.checkbox_regular);
+        CheckBox r = (CheckBox) view;
         if (r.isChecked()) {
             rChecked = true;
+        } else {
+            rChecked = false;
         }
     }
     public void displayShipping() {
