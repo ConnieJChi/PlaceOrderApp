@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.text.NumberFormat;
 
 
@@ -86,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         name.setText("");
         TextView shipping = findViewById(R.id.shipping_view);
         shipping.setText("");
+        rChecked = false;
+        pChecked = false;
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
@@ -107,11 +107,15 @@ public class MainActivity extends AppCompatActivity {
     }
     public void displayShipping() {
         TextView shipping = findViewById(R.id.shipping_view);
-        if (pChecked) {
-            shipping.setText("Premium Shipping!");
+        if (rChecked && pChecked) {
+            shipping.setText("Choose one shipping option!");
         } else if (rChecked) {
             shipping.setText("Regular Shipping!");
-            }
+        } else if (pChecked) {
+            shipping.setText("Premium Shipping!");
+        } else {
+            shipping.setText("Choose an option please!");
         }
 
+    }
     }
