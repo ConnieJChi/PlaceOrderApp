@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         totalTextView.setText("");
         TextView name = findViewById(R.id.name_view);
         name.setText("");
+        TextView shipping = findViewById(R.id.shipping_view);
+        shipping.setText("");
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
