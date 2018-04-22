@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         displayOrder();
         displayOrderTotal(calcPrice(numOfCoffees));
         displayName();
+        displayProduct();
         displayShipping();
     }
 
@@ -74,10 +75,20 @@ public class MainActivity extends AppCompatActivity {
     private void displayName() {
         TextView name = findViewById(R.id.name_view);
         EditText nameGet = findViewById(R.id.name_get);
-        if (name.getText() != "") {
+        if (!nameGet.getText().toString().isEmpty()) {
             name.setText("Name: " + nameGet.getText());
         } else {
             name.setText("Please enter a name!");
+        }
+    }
+
+    private void displayProduct() {
+        TextView productName = findViewById(R.id.productname_view);
+        EditText productGet = findViewById(R.id.product_name_get);
+        if (!productGet.getText().toString().isEmpty()) {
+            productName.setText("Product: " + productGet.getText());
+        } else {
+            productName.setText("Please enter a product name!");
         }
     }
 //    private void uncheck() {
@@ -95,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
         name.setText("");
         TextView shipping = findViewById(R.id.shipping_view);
         shipping.setText("");
+        TextView product = findViewById(R.id.productname_view);
+        product.setText("");
+
     }
     private void displayOrderTotal(int num) {
         TextView orderedTextView = findViewById(R.id.total_view);
