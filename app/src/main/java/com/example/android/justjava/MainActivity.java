@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -71,8 +72,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayName() {
-        TextView orderedTextView = findViewById(R.id.name_view);
-        orderedTextView.setText("Name: Connie Chi");
+        TextView name = findViewById(R.id.name_view);
+        EditText nameGet = findViewById(R.id.name_get);
+        if (name.getText() != "") {
+            name.setText("Name: " + nameGet.getText());
+        } else {
+            name.setText("Please enter a name!");
+        }
     }
 //    private void uncheck() {
 //        CheckBox p = findViewById(R.id.checkbox_premium);
