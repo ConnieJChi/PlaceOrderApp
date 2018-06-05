@@ -65,10 +65,12 @@ public class MainActivity extends AppCompatActivity {
     }
     private void displayOrder() {
         TextView orderedTextView = findViewById(R.id.ordered_view);
-        if (numOfCoffees > 0) {
-            orderedTextView.setText("Order has been submitted! Thank you!");
-        } else {
+        if ((rChecked && pChecked) || (!rChecked && !pChecked))  {
+            orderedTextView.setText("Check proper shipping options!");
+        } else if ( numOfCoffees <= 0) {
             orderedTextView.setText("Please enter a number greater than 0!");
+        } else if (numOfCoffees > 0) {
+            orderedTextView.setText("Order has been submitted! Thank you!");
         }
     }
 
