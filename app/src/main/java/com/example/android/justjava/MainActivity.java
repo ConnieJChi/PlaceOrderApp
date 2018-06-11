@@ -1,5 +1,6 @@
 package com.example.android.justjava;
 //
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,19 +25,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void update(View view) {
         display(numOfCoffees);
-        displayPrice(calcPrice(numOfCoffees));
+        displayPrice(calcPrice());
     }
 
     public void submitOrder(View view) {
         displayOrder();
-        displayOrderTotal(calcPrice(numOfCoffees));
+        displayOrderTotal(calcPrice());
         displayName();
         displayProduct();
         displayShipping();
+
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+
     }
 
-    public int calcPrice(int quantity) {
-        return numOfCoffees * PRICE;
+    public int calcPrice() {
+        if (pChecked) {
+            return numOfCoffees * PRICE + 3;
+        } else {
+            return numOfCoffees * PRICE;
+        }
     }
 
     public void increment(View view) {
@@ -148,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (rChecked) {
             shipping.setText("Regular Shipping!");
         } else if (pChecked) {
-            shipping.setText("Premium Shipping!");
+            shipping.setText("Premium Shipping! Extra $3 cost. ");
         } else {
             shipping.setText("Choose an option please!");
         }
